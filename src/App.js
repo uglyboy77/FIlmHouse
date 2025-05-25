@@ -8,12 +8,18 @@ const API_URL = 'https://www.omdbapi.com?apikey=b6003d8a';
 
 const APP = () => {
   const [SearchTerm, setSearchTerm] = useState("");
-  const [Movies, setMovies] = useState([1]);
+  const [Movies, setMovies] = useState([]);
 
   const searchMovies = async (title) => {
-    const response = await fetch(`${API_URL}&s=${title}`);
-    const data = await response.json()
-    setMovies(data.Search);
+    try {
+        const response = await fetch(`${API_URL}&s=${title}`);
+        const data = await response.json();
+        console.log(data); 
+        setMovies(data.Search || []);
+    } catch (error) {
+        console.error("Error fetching movies:", error);
+    }
+
   };
   useEffect(() => {
     searchMovies("batman");
