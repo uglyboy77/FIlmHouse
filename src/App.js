@@ -30,7 +30,7 @@ const APP = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="search movies" />
         <img src={SearchIcon}
-          onClick={() => searchMovies(SearchTerm)} />
+          onClick={() => searchMovies(SearchTerm)} alt="search button"/>
       </div>
 
       {Movies?.length > 0 ? (
